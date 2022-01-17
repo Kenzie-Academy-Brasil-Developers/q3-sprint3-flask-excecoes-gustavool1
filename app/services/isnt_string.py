@@ -8,10 +8,10 @@ def inst_string(name, email):
         "tuple":"tuple"
     }
 
-    if primitive_types.get(type(name).__name__) != None:
+    if primitive_types.get(type(name).__name__) :
         obj["wrong_fields"].append({"name":primitive_types.get(type(name).__name__)}) 
 
-    if primitive_types.get(type(email).__name__) != None:
+    if primitive_types.get(type(email).__name__) :
         obj["wrong_fields"].append({"email":primitive_types.get(type(email).__name__)}) 
     
     return obj

@@ -1,4 +1,4 @@
-from json import dump
+
 from app.exc.bad_request import BadRequestError
 
 from app.exc.email_already_used import EmailAlreadyUsedError
@@ -9,25 +9,6 @@ class User:
         self.nome = nome
         self.email = email
         self.id = self.dinamic_id()
-
-
-    def __repr__(self) -> str:
-        return f"Nome:{self.nome} | Email:{self.email} | Id:{self.id}"
-
-
-    def __str__(self, atribute) -> str:
-        return f"{self.atribute}"
-
-
-    def is_string(self):
-        obj = {}
-        if type(self.nome) != str:
-            obj["name"] = type(self.nome).__name__
-        if type(self.email) != str:
-            obj["email"] = type(self.email).__name__
-        
-        return obj
-
 
     def dinamic_id(self):
         users_list = self.get_users()
@@ -43,7 +24,7 @@ class User:
             raise BadRequestError
         else:
             self.nome = self.nome.title()
-            self.email = self.email.upper()
+            self.email = self.email.lower()
     
     @staticmethod
     def get_users():

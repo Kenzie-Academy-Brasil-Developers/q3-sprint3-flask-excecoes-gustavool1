@@ -6,7 +6,6 @@ def email_already_used(email):
 
     for user in users_list:
         if type(email) == str:
-            print('a')
-            if user["email"] == email.upper():
+            if user["email"] == email.lower():
                 raise EmailAlreadyUsedError
     return False

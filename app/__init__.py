@@ -15,11 +15,13 @@ def retrieve():
 
 @app.post("/user")
 def creating_user_route():
+
     data = request.get_json()
     user = User(**data)
     try:
         user.save_user(user)
-        return writing_json(user.__dict__), HTTPStatus.CREATED
+        writing_json(user.__dict__)
+        return user.__dict__, HTTPStatus.CREATED
         
     except EmailAlreadyUsedError:
         return {"error":"User already exists."}, HTTPStatus.CONFLICT
